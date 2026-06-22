@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  * {
+    @apply border-white/10;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* offset for the sticky header when jumping to #anchors */
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-ink text-white/90 antialiased;
+    font-feature-settings: "ss01", "cv01";
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-brand-500/30 text-white;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight text-balance text-white;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-tight {
+    @apply container max-w-5xl;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-brand-300;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition duration-200 will-change-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-ink;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand-500 text-white shadow-glow hover:bg-brand-600 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-light {
+    @apply btn bg-white text-ink hover:bg-white/90 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-ghost {
+    @apply btn border border-white/15 bg-white/5 text-white hover:border-white/25 hover:bg-white/10;
+  }
+
+  .card {
+    @apply rounded-2xl border border-white/10 bg-white/[0.03] shadow-card;
+  }
+
+  .section {
+    @apply py-16 sm:py-28;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-400 via-brand-500 to-brand-600 bg-clip-text text-transparent;
+  }
+  /* hide scrollbar for horizontal marquees */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
