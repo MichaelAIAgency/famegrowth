@@ -15,7 +15,10 @@ export function Hero() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10"
       >
-        <div className="absolute left-1/2 top-0 h-[480px] w-[820px] -translate-x-1/2 rounded-full bg-brand-500/20 blur-[130px]" />
+        <div 
+          className="absolute left-1/2 top-0 h-[480px] w-[820px] -translate-x-1/2 rounded-full"
+          style={{ background: 'radial-gradient(closest-side, rgba(239, 11, 80, 0.2), transparent)' }}
+        />
         <div className="absolute inset-0 bg-grid-fade [background-size:26px_26px] opacity-60 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
       </div>
 

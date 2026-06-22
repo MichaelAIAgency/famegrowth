@@ -83,7 +83,8 @@ export default function WerdeChatterPage() {
       <section className="relative overflow-hidden pt-32 pb-12">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[420px] w-[760px] -translate-x-1/2 rounded-full bg-brand-500/20 blur-[130px]"
+          className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[420px] w-[760px] -translate-x-1/2 rounded-full"
+          style={{ background: 'radial-gradient(closest-side, rgba(239, 11, 80, 0.2), transparent)' }}
         />
         <div className="container max-w-3xl text-center">
           <Reveal>

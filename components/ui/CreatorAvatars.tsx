@@ -46,6 +46,7 @@ export function CreatorAvatars() {
               alt="Creator"
               fill
               sizes="36px"
+              priority
               className="object-cover object-top"
             />
           </motion.div>

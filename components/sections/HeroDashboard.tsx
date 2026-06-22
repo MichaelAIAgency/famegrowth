@@ -72,7 +72,7 @@ export function HeroDashboard() {
       {/* ambient glow */}
       <div
         aria-hidden="true"
-        className="absolute -inset-10 -z-10 rounded-[3rem] bg-[radial-gradient(closest-side,rgba(239,11,80,0.35),transparent)] blur-2xl"
+        className="absolute -inset-10 -z-10 rounded-[3rem] bg-[radial-gradient(closest-side,rgba(239,11,80,0.35),transparent)]"
       />
 
       {/* floating growth badge */}

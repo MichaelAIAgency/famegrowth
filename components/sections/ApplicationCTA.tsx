@@ -57,7 +57,8 @@ Aktueller Umsatz: ${data.revenue ?? ""}`;
           {/* glow */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -right-20 -top-24 h-80 w-80 rounded-full bg-brand-500/30 blur-3xl"
+            className="pointer-events-none absolute -right-20 -top-24 h-80 w-80 rounded-full"
+            style={{ background: 'radial-gradient(closest-side, rgba(239, 11, 80, 0.3), transparent)' }}
           />
           <div className="relative grid gap-12 lg:grid-cols-2 lg:items-center">
             {/* left: pitch + scarcity */}
