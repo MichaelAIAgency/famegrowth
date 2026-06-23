@@ -69,20 +69,18 @@ export function Header() {
         </div>
 
         <div className="mr-auto flex items-center gap-2 pl-3 lg:hidden">
-          <a
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex h-10 items-center justify-center gap-1.5 rounded-full border border-white/20 bg-white/15 px-3.5 text-sm font-semibold text-white transition hover:bg-white/25"
+          <Link
+            href="/werde-chatter"
+            className="inline-flex h-8 items-center justify-center gap-1 rounded-full border border-white/20 bg-white/15 px-2.5 text-xs font-semibold text-white transition hover:bg-white/25"
           >
-            <Headphones className="h-4 w-4" />
+            <Headphones className="h-3.5 w-3.5" />
             Chatter
-          </a>
+          </Link>
           <a
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-10 items-center justify-center rounded-full bg-brand-500 px-3.5 text-sm font-semibold text-white shadow-[0_0_0_1px_rgba(255,255,255,0.1)] transition hover:bg-brand-600"
+            className="inline-flex h-8 items-center justify-center rounded-full bg-brand-500 px-2.5 text-xs font-semibold text-white shadow-[0_0_0_1px_rgba(255,255,255,0.1)] transition hover:bg-brand-600"
           >
             Bewerben
           </a>
