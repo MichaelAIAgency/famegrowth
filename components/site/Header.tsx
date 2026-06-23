@@ -68,32 +68,32 @@ export function Header() {
           </Link>
         </div>
 
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="mr-auto flex items-center gap-2 pl-3 lg:hidden">
           <a
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-9 items-center justify-center gap-1.5 rounded-full bg-white/10 px-3 text-xs font-semibold text-white transition hover:bg-white/20"
+            className="inline-flex h-10 items-center justify-center gap-1.5 rounded-full border border-white/20 bg-white/15 px-3.5 text-sm font-semibold text-white transition hover:bg-white/25"
           >
-            <Headphones className="h-3.5 w-3.5" />
+            <Headphones className="h-4 w-4" />
             Chatter
           </a>
           <a
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-9 items-center justify-center rounded-full bg-brand-500 px-3 text-xs font-semibold text-white transition hover:bg-brand-600"
+            className="inline-flex h-10 items-center justify-center rounded-full bg-brand-500 px-3.5 text-sm font-semibold text-white shadow-[0_0_0_1px_rgba(255,255,255,0.1)] transition hover:bg-brand-600"
           >
             Bewerben
           </a>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="ml-1 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white transition hover:bg-white/20"
             aria-label={open ? "Menü schließen" : "Menü öffnen"}
             aria-expanded={open}
           >
-            {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
 
