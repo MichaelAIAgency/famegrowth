@@ -35,14 +35,16 @@ export function Footer() {
               </a>
             </div>
 
-            <Link
-              href="/werde-chatter"
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-6 inline-flex items-center gap-2 rounded-full border border-brand-500/40 bg-brand-500/10 px-4 py-2.5 text-sm font-semibold text-brand-300 transition hover:bg-brand-500 hover:text-white"
             >
               <Headphones className="h-4 w-4" />
-              Werde Chatter
+              Werde Chatter auf WhatsApp
               <ArrowUpRight className="h-4 w-4" />
-            </Link>
+            </a>
           </div>
 
           <nav aria-label="Footer Navigation">

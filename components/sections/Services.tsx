@@ -5,6 +5,7 @@ import {
   TrendingUp,
   UserCheck,
   Receipt,
+  Sparkles,
 } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -23,6 +24,15 @@ const services = [
     icon: MessagesSquare,
     title: "24/7 Betreuung & Chatting",
     body: "Unser Team betreut deine Fans rund um die Uhr und verkauft im Tonfall deiner Marke. Der größte Umsatzhebel, komplett übernommen.",
+  },
+  {
+    icon: Sparkles,
+    title: "KI-Content Erstellung",
+    body: "Wir erstellen auf Wunsch täuschend echten KI-Content für deinen Account. So kannst du skalieren, ohne 24/7 shooten zu müssen.",
+    cta: {
+      text: "Beispiele per WhatsApp anfragen",
+      href: "https://wa.me/4915100000000?text=Hey,%20ich%20h%C3%A4tte%20gerne%20Beispiele%20zu%20eurem%20KI-Content!",
+    }
   },
   {
     icon: TrendingUp,
@@ -67,6 +77,16 @@ export function Services() {
                 <p className="mt-2 text-sm leading-relaxed text-white/60">
                   {s.body}
                 </p>
+                {s.cta && (
+                  <a
+                    href={s.cta.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-block text-sm font-semibold text-brand-300 hover:text-brand-400"
+                  >
+                    {s.cta.text} &rarr;
+                  </a>
+                )}
               </article>
             </Reveal>
           ))}

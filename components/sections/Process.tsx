@@ -3,28 +3,28 @@ import { Reveal } from "@/components/ui/Reveal";
 const steps = [
   {
     n: "01",
-    title: "Klarheit",
-    body: "Dich und deine Ziele glasklar definieren.",
+    title: "Setup & Strategie",
+    body: "Wir richten deinen Account professionell ein und erstellen einen individuellen Content-Plan.",
   },
   {
     n: "02",
-    title: "Struktur",
-    body: "Alle Grundlagen für deinen Erfolg schaffen.",
+    title: "Traffic & Marketing",
+    body: "Gezielte Werbekampagnen auf Social Media (TikTok, IG, Reddit) bringen dir täglich neue Fans.",
   },
   {
     n: "03",
-    title: "Brand",
-    body: "Dich sichtbar und unverwechselbar machen.",
+    title: "Content & KI",
+    body: "Du lieferst Basis-Bilder, wir skalieren deinen Output mit täuschend echtem KI-Content.",
   },
   {
     n: "04",
-    title: "Launch",
-    body: "Deinen Content starten und Fans gewinnen.",
+    title: "Chatting & Sales",
+    body: "Unser Team chattet rund um die Uhr mit deinen Fans und verkauft proaktiv Pay-Per-View Inhalte.",
   },
   {
     n: "05",
     title: "Skalierung",
-    body: "Dein Wachstum planbar und nachhaltig ausbauen.",
+    body: "Wir optimieren Preise, analysieren Daten und sorgen für sichere, wachsende Auszahlungen.",
   },
 ];
 

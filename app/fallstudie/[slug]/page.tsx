@@ -74,10 +74,10 @@ export default function CaseStudyPage({ params }: Params) {
             </p>
           </header>
 
-          {/* cover image — stacked on mobile, side by side with nachweis on sm+ */}
+          {/* cover image — banner across mobile and desktop */}
           {study.image && (
-            <div className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row">
-              <div className="relative aspect-[16/10] overflow-hidden rounded-2xl sm:aspect-auto sm:min-h-[200px] sm:flex-1">
+            <div className="mt-10 flex flex-col items-stretch gap-3">
+              <div className="relative aspect-[16/10] overflow-hidden rounded-2xl sm:aspect-[16/9]">
                 <Image
                   src={study.image}
                   alt={study.headline}

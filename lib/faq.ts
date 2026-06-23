@@ -24,4 +24,20 @@ export const faqItems = [
     q: "Mit wem arbeitet ihr zusammen?",
     a: "Wir arbeiten bewusst nur mit einer begrenzten Anzahl Creator pro Monat, damit jeder Account die volle Aufmerksamkeit bekommt. Deshalb läuft die Zusammenarbeit über eine kurze Bewerbung. So stellen wir sicher, dass wir wirklich liefern können.",
   },
+  {
+    q: "Nutzt ihr Künstliche Intelligenz (KI) für Content?",
+    a: "Ja, auf Wunsch integrieren wir modernste KI-Tools. Wir können täuschend echten KI-Content erstellen, um deinen Output zu skalieren, ohne dass du rund um die Uhr neue Fotos machen musst. Das ist ein Gamechanger für stetiges Wachstum.",
+  },
+  {
+    q: "Wem gehört mein OnlyFans Account?",
+    a: "Dir. Du bleibst zu 100 % Eigentümer deines Accounts und aller Inhalte. Wir agieren lediglich als deine Manager und Berater. Du behältst jederzeit die volle Kontrolle.",
+  },
+  {
+    q: "Wie viel Zeit muss ich selbst noch investieren?",
+    a: "Unser Ziel ist es, dir bis zu 90 % der Arbeit abzunehmen. Deine Hauptaufgabe bleibt die Content-Erstellung nach unserem strukturierten Plan. Chatting, Marketing und Verwaltung übernehmen wir komplett. Rechne mit ca. 1-2 Stunden am Tag für die reine Content-Produktion.",
+  },
+  {
+    q: "Ist mein bestehender Content sicher?",
+    a: "Absolut. Wir richten strikte Sicherheitsmaßnahmen ein und nutzen automatisierte DMCA Takedown Services, um geleakte Inhalte sofort aus dem Netz zu entfernen. Deine Privatsphäre und dein Content sind unser höchstes Gut.",
+  },
 ] as const;

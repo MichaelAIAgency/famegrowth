@@ -11,6 +11,7 @@ import { CaseStudyTeaser } from "@/components/sections/CaseStudyTeaser";
 import { BlogTeaser } from "@/components/sections/BlogTeaser";
 import { FAQ } from "@/components/sections/FAQ";
 import { ApplicationCTA } from "@/components/sections/ApplicationCTA";
+import { InlineCTA } from "@/components/ui/InlineCTA";
 import { faqJsonLd } from "@/lib/seo";
 import { faqItems } from "@/lib/faq";
 
@@ -29,8 +30,13 @@ export default function HomePage() {
       <Problems />
       <Stats />
       <Services />
+      <InlineCTA />
       <IncomeCalculator />
       <Process />
+      <InlineCTA 
+        title="Klingt nach dem perfekten Plan?" 
+        description="Lass uns genau diesen Blueprint auf deinen Account anwenden. Schreib uns auf WhatsApp." 
+      />
       <AboutUs />
       <Comparison />
       <Testimonials />

@@ -6,11 +6,11 @@ import {
   motion,
   useReducedMotion,
 } from "framer-motion";
-import { TrendingUp, Bell, ArrowUpRight } from "lucide-react";
+import { Lock, ArrowLeft, ChevronDown, User, CheckCircle2 } from "lucide-react";
 
 // --- chart geometry ---------------------------------------------------------
-const W = 280;
-const H = 96;
+const W = 400;
+const H = 120;
 const DATA = [18, 30, 26, 45, 54, 70, 92];
 
 const points = DATA.map((v, i) => {
@@ -27,10 +27,10 @@ const areaPath = `${linePath} L${W},${H} L0,${H} Z`;
 
 // --- cycling notifications --------------------------------------------------
 const NOTIFICATIONS = [
-  { title: "Neuer Abonnent", amount: "+25 €", tone: "from-brand-400 to-brand-600" },
-  { title: "Trinkgeld erhalten", amount: "+120 €", tone: "from-brand-500 to-brand-700" },
-  { title: "PPV verkauft", amount: "+49 €", tone: "from-brand-300 to-brand-500" },
-  { title: "Bundle gekauft", amount: "+89 €", tone: "from-brand-400 to-brand-600" },
+  { user: "User9482", action: "hat dein Profil abonniert", amount: "+ 24,99 €" },
+  { user: "FanXYZ", action: "hat ein Trinkgeld gesendet", amount: "+ 100,00 €" },
+  { user: "LoverBoy", action: "hat eine Nachricht gekauft", amount: "+ 49,00 €" },
+  { user: "BigSpender", action: "hat ein Trinkgeld gesendet", amount: "+ 250,00 €" },
 ];
 
 const TARGET = 38420;
@@ -60,7 +60,7 @@ export function HeroDashboard() {
     if (reduce) return;
     const id = setInterval(
       () => setNotif((n) => (n + 1) % NOTIFICATIONS.length),
-      2600,
+      3000,
     );
     return () => clearInterval(id);
   }, [reduce]);
@@ -68,182 +68,173 @@ export function HeroDashboard() {
   const active = NOTIFICATIONS[notif];
 
   return (
-    <div className="relative mx-auto w-full max-w-[360px]">
+    <div className="relative mx-auto w-full max-w-[360px] font-sans">
       {/* ambient glow */}
       <div
         aria-hidden="true"
-        className="absolute -inset-10 -z-10 rounded-[3rem] bg-[radial-gradient(closest-side,rgba(239,11,80,0.35),transparent)]"
+        className="absolute -inset-10 -z-10 rounded-[3rem] bg-[radial-gradient(closest-side,rgba(0,175,240,0.3),transparent)]"
       />
 
-      {/* floating growth badge */}
+      {/* Floating OF Brand Tag */}
       <motion.div
-        initial={reduce ? false : { opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: [0, -8, 0] }}
-        transition={{
-          opacity: { duration: 0.5, delay: 0.3 },
-          y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
-        }}
-        className="absolute -left-4 top-[46%] z-20 hidden rounded-2xl bg-white p-3 shadow-soft ring-1 ring-black/5 sm:block"
+        initial={reduce ? false : { opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="absolute -right-4 -top-6 z-20 flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 shadow-lg backdrop-blur-md sm:-right-8"
       >
-        <div className="flex items-center gap-2">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
-            <TrendingUp className="h-5 w-5" />
-          </span>
-          <div>
-            <p className="text-[10px] font-medium uppercase tracking-wide text-ink/40">
-              30-Tage-Wachstum
-            </p>
-            <p className="text-sm font-bold text-ink">+312 %</p>
+        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#00AFF0] text-white">
+          <CheckCircle2 className="h-4 w-4" />
+        </div>
+        <span className="text-sm font-semibold text-white">OnlyFans Creator</span>
+      </motion.div>
+
+      {/* Browser frame */}
+      <div className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white shadow-[0_20px_50px_-10px_rgba(0,175,240,0.2)]">
+        
+        {/* Browser Header (Mac style) */}
+        <div className="flex items-center justify-between border-b border-[#e8e8e8] bg-[#f5f5f5] px-4 py-3">
+          <div className="flex items-center gap-1.5">
+            <div className="h-3 w-3 rounded-full bg-[#FF5F56]" />
+            <div className="h-3 w-3 rounded-full bg-[#FFBD2E]" />
+            <div className="h-3 w-3 rounded-full bg-[#27C93F]" />
           </div>
+          <div className="flex flex-1 justify-center px-4">
+            <div className="flex w-full max-w-[240px] items-center justify-center gap-1.5 rounded-md border border-[#ddd] bg-white px-2 py-1 text-[11px] text-[#888]">
+              <Lock className="h-3 w-3" />
+              <span>onlyfans.com/dein-profil</span>
+            </div>
+          </div>
+          <div className="w-[42px]" /> {/* Spacer for symmetry */}
         </div>
-      </motion.div>
 
-      {/* floating payout card */}
-      <motion.div
-        initial={reduce ? false : { opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: [0, 8, 0] }}
-        transition={{
-          opacity: { duration: 0.5, delay: 0.5 },
-          y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
-        }}
-        className="absolute -right-3 bottom-20 z-20 hidden rounded-2xl bg-white p-3 shadow-soft ring-1 ring-black/5 sm:block"
-      >
-        <p className="text-[10px] font-medium uppercase tracking-wide text-ink/40">
-          Auszahlung heute
-        </p>
-        <p className="text-sm font-bold text-ink">1.284,00 €</p>
-        <div className="mt-1 h-1.5 w-24 overflow-hidden rounded-full bg-ink/5">
-          <motion.div
-            className="h-full rounded-full bg-brand-500"
-            initial={{ width: reduce ? "82%" : 0 }}
-            animate={{ width: "82%" }}
-            transition={{ duration: 1.4, delay: 0.6, ease: "easeOut" }}
-          />
-        </div>
-      </motion.div>
+        {/* OF UI Content */}
+        <div className="relative bg-[#f6f9fc]">
+          
+          {/* OF Header */}
+          <div className="flex items-center justify-between bg-white px-4 pb-3 pt-4 shadow-sm">
+            <div className="flex items-center gap-3">
+              <ArrowLeft className="h-5 w-5 text-[#8A96A3]" />
+              <span className="text-lg font-bold tracking-tight text-[#242529]">Kontoauszug</span>
+            </div>
+            <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-[#e8e8e8] bg-[#f6f9fc] text-[#8A96A3]">
+              <User className="h-4 w-4" />
+            </div>
+          </div>
 
-      {/* phone */}
-      <div className="relative rounded-[2.6rem] border border-white/10 bg-ink p-2.5 shadow-[0_40px_90px_-30px_rgba(7,13,11,0.7)]">
-        <div className="relative overflow-hidden rounded-[2.1rem] bg-ink-900">
-          {/* dynamic island */}
-          <div className="absolute left-1/2 top-3 z-30 h-5 w-24 -translate-x-1/2 rounded-full bg-black" />
+          <div className="p-3 sm:p-4">
+            {/* Date Range Selector */}
+            <div className="flex w-max cursor-pointer items-center gap-1.5 rounded-full border border-[#e8e8e8] bg-white px-4 py-1.5 shadow-sm transition hover:bg-gray-50">
+              <span className="text-xs font-semibold text-[#8A96A3]">Letzte 30 Tage</span>
+              <ChevronDown className="h-3 w-3 text-[#8A96A3]" />
+            </div>
 
-          <div className="px-5 pb-6 pt-10 text-white">
-            {/* header row */}
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-[11px] font-medium text-white/40">
-                  Umsatz diesen Monat
+            {/* Stat Boxes */}
+            <div className="mt-4 grid grid-cols-2 gap-3">
+              <div className="rounded-2xl border border-[#e8e8e8] bg-white p-3.5 shadow-sm transition hover:shadow-md">
+                <p className="text-[10px] font-bold uppercase tracking-wider text-[#8A96A3]">
+                  Brutto
                 </p>
-                <div className="mt-1 flex items-baseline gap-2">
-                  <span className="font-display text-3xl font-bold tabular-nums">
-                    {balance.toLocaleString("de-DE")} €
-                  </span>
-                </div>
+                <p className="mt-0.5 text-xl font-black text-[#242529]">
+                  {balance.toLocaleString("de-DE")} €
+                </p>
               </div>
-              <span className="inline-flex items-center gap-1 rounded-full bg-brand-500/15 px-2 py-1 text-[11px] font-semibold text-brand-300">
-                <ArrowUpRight className="h-3 w-3" /> +24 %
-              </span>
+              <div className="rounded-2xl border border-[#e8e8e8] bg-white p-3.5 shadow-sm transition hover:shadow-md">
+                <p className="text-[10px] font-bold uppercase tracking-wider text-[#8A96A3]">
+                  Netto
+                </p>
+                <p className="mt-0.5 text-xl font-black text-[#00AFF0]">
+                  {Math.round(balance * 0.8).toLocaleString("de-DE")} €
+                </p>
+              </div>
             </div>
 
-            {/* area chart */}
-            <div className="mt-5">
-              <svg
-                viewBox={`0 0 ${W} ${H}`}
-                className="h-24 w-full overflow-visible"
-                role="img"
-                aria-label="Umsatzentwicklung steigend"
-              >
-                <defs>
-                  <linearGradient id="fg-area" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#f54078" stopOpacity="0.45" />
-                    <stop offset="100%" stopColor="#f54078" stopOpacity="0" />
-                  </linearGradient>
-                </defs>
-                <motion.path
-                  d={areaPath}
-                  fill="url(#fg-area)"
-                  initial={{ opacity: reduce ? 1 : 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.9 }}
-                />
-                <motion.path
-                  d={linePath}
-                  fill="none"
-                  stroke="#f54078"
-                  strokeWidth={3}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  initial={{ pathLength: reduce ? 1 : 0 }}
-                  animate={{ pathLength: 1 }}
-                  transition={{ duration: 1.4, ease: "easeInOut", delay: 0.2 }}
-                />
-                <motion.circle
-                  cx={points[points.length - 1][0]}
-                  cy={points[points.length - 1][1]}
-                  r={4}
-                  fill="#fff"
-                  stroke="#f54078"
-                  strokeWidth={2}
-                  initial={{ scale: reduce ? 1 : 0, opacity: reduce ? 1 : 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ delay: 1.5, type: "spring", stiffness: 300 }}
-                />
-              </svg>
-            </div>
-
-            {/* bars */}
-            <div className="mt-5 flex items-end justify-between gap-1.5">
-              {[40, 55, 48, 70, 62, 85, 100].map((h, i) => (
-                <motion.div
-                  key={i}
-                  className="w-full rounded-md bg-gradient-to-t from-brand-600/40 to-brand-400"
-                  style={{ height: 56, transformOrigin: "bottom" }}
-                  initial={{ scaleY: reduce ? h / 100 : 0 }}
-                  animate={{ scaleY: h / 100 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.6 + i * 0.07,
-                    ease: "easeOut",
-                  }}
-                />
-              ))}
-            </div>
-
-            <div className="mt-3 flex justify-between text-[9px] text-white/30">
-              {["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"].map((d) => (
-                <span key={d}>{d}</span>
-              ))}
-            </div>
-          </div>
-
-          {/* live notification inside the screen */}
-          <div className="relative h-20 px-4 pb-4">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={notif}
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-                className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.06] p-3 backdrop-blur"
-              >
-                <span
-                  className={`flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br ${active.tone} text-white`}
+            {/* Chart Box */}
+            <div className="mt-3 rounded-2xl border border-[#e8e8e8] bg-white p-4 shadow-sm">
+              <div className="flex items-center justify-between">
+                <p className="text-sm font-bold text-[#242529]">Umsatz über die Zeit</p>
+                <span className="text-[10px] font-semibold text-[#00AFF0]">+24%</span>
+              </div>
+              
+              <div className="mt-4 h-24 w-full">
+                <svg
+                  viewBox={`0 0 ${W} ${H}`}
+                  className="h-full w-full overflow-visible"
+                  preserveAspectRatio="none"
+                  role="img"
                 >
-                  <Bell className="h-4 w-4" />
-                </span>
-                <div className="min-w-0 flex-1">
-                  <p className="text-xs font-semibold text-white">
-                    {active.title}
-                  </p>
-                  <p className="text-[10px] text-white/40">gerade eben</p>
-                </div>
-                <span className="text-sm font-bold text-brand-300">
-                  {active.amount}
-                </span>
-              </motion.div>
-            </AnimatePresence>
+                  <defs>
+                    <linearGradient id="of-area" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#00AFF0" stopOpacity="0.25" />
+                      <stop offset="100%" stopColor="#00AFF0" stopOpacity="0" />
+                    </linearGradient>
+                  </defs>
+                  <motion.path
+                    d={areaPath}
+                    fill="url(#of-area)"
+                    initial={{ opacity: reduce ? 1 : 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8, delay: 0.9 }}
+                  />
+                  <motion.path
+                    d={linePath}
+                    fill="none"
+                    stroke="#00AFF0"
+                    strokeWidth={4}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    initial={{ pathLength: reduce ? 1 : 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 1.4, ease: "easeInOut", delay: 0.2 }}
+                  />
+                  <motion.circle
+                    cx={points[points.length - 1][0]}
+                    cy={points[points.length - 1][1]}
+                    r={5}
+                    fill="#fff"
+                    stroke="#00AFF0"
+                    strokeWidth={2.5}
+                    initial={{ scale: reduce ? 1 : 0, opacity: reduce ? 1 : 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: 1.5, type: "spring", stiffness: 300 }}
+                  />
+                </svg>
+              </div>
+              <div className="mt-3 flex justify-between px-1 text-[11px] font-semibold text-[#8A96A3]">
+                <span>1. Okt</span>
+                <span>15. Okt</span>
+                <span>31. Okt</span>
+              </div>
+            </div>
+
+            {/* Live Notifications */}
+            <div className="mt-4">
+              <p className="mb-3 px-1 text-xs font-bold text-[#242529]">Kürzliche Aktivitäten</p>
+              <div className="relative h-16">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={notif}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    className="absolute w-full flex items-center gap-3 rounded-2xl border border-[#e8e8e8] bg-white p-3 shadow-sm"
+                  >
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#f6f9fc] text-[#8A96A3]">
+                       <User className="h-4 w-4" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold text-[#242529]">
+                        {active.user}
+                      </p>
+                      <p className="truncate text-[10px] text-[#8A96A3]">{active.action}</p>
+                    </div>
+                    <span className="text-sm font-black text-[#00AFF0]">
+                      {active.amount}
+                    </span>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, X, ArrowUpRight, Headphones } from "lucide-react";
-import { nav } from "@/lib/site";
+import { nav, whatsappLink } from "@/lib/site";
 import { Logo } from "./Logo";
 
 export function Header() {
@@ -52,21 +52,56 @@ export function Header() {
           ))}
         </ul>
 
-        <div className="hidden items-center gap-2.5 xl:flex">
-          <Link href="/werde-chatter" className="btn-ghost text-sm">
+        <div className="hidden items-center gap-2.5 lg:flex">
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-ghost text-sm"
+          >
             <Headphones className="h-4 w-4" />
             Werde Chatter
-          </Link>
+          </a>
           <Link href="/#bewerbung" className="btn-primary text-sm">
             Jetzt bewerben
             <ArrowUpRight className="h-4 w-4" />
           </Link>
         </div>
 
+        <div className="flex items-center gap-2 lg:hidden">
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-9 items-center justify-center gap-1.5 rounded-full bg-white/10 px-3 text-xs font-semibold text-white transition hover:bg-white/20"
+          >
+            <Headphones className="h-3.5 w-3.5" />
+            Chatter
+          </a>
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-9 items-center justify-center rounded-full bg-brand-500 px-3 text-xs font-semibold text-white transition hover:bg-brand-600"
+          >
+            Bewerben
+          </a>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="ml-1 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white"
+            aria-label={open ? "Menü schließen" : "Menü öffnen"}
+            aria-expanded={open}
+          >
+            {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+          </button>
+        </div>
+
+        {/* Desktop Hamburger (if we need to show it on some breakpoints, but we hide menu button on xl/lg normally) */}
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white xl:hidden"
+          className="hidden h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white xl:hidden"
           aria-label={open ? "Menü schließen" : "Menü öffnen"}
           aria-expanded={open}
         >
@@ -88,14 +123,16 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
-            <Link
-              href="/werde-chatter"
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setOpen(false)}
               className="btn-ghost mt-2"
             >
               <Headphones className="h-4 w-4" />
               Werde Chatter
-            </Link>
+            </a>
             <Link
               href="/#bewerbung"
               onClick={() => setOpen(false)}
